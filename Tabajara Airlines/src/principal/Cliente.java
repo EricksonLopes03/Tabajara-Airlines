@@ -2,8 +2,8 @@ package principal;
 
 public class Cliente {
 
-	int identificacao;
-	String nome, logradouro, numero, bairro, municipio, estado, cep, telefone;
+	private int identificacao;
+	private String nome, logradouro, numero, bairro, municipio, estado, cep, telefone;
 	
 	
 	public Cliente(int identificacao, String nome, String logradouro, String numero, String bairro, String municipio,

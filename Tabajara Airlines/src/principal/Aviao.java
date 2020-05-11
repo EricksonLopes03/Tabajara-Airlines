@@ -2,9 +2,9 @@ package principal;
 
 public class Aviao {
 
-	String identificacao, modelo;
-	int qtdTurbinas, capacPassageiros;
-	double capacCarga;
+	private String identificacao, modelo;
+	private int qtdTurbinas, capacPassageiros;
+	private double capacCarga;
 	
 	public Aviao(String identificacao, String modelo, int qtdTurbinas, int capacPassageiros, double capacCarga) {
 		super();
