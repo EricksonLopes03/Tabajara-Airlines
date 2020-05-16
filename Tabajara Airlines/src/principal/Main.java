@@ -36,7 +36,7 @@ public class Main {
 					System.out.println("1 - Cadastrar");
 					System.out.println("2 - Alterar");
 					System.out.println("3 - Excluir");
-					System.out.println("4 - Relatório");
+					System.out.println("4 - Relatóri");
 					System.out.println("5 - Consulta");
 					System.out.println("0 - Voltar");
 					sop1 = sc.nextInt();
