@@ -133,9 +133,9 @@ public class Voo {
 	
 	public void imprimir() {
 		System.out.println("Identificação do avião: " + aviao.getIdentificacao());
-		System.out.println("Aeroporto de partida: " + aeroportoPartida);
+		System.out.println("ID Aeroporto de partida: " + aeroportoPartida.getIdentificacao());
 		System.out.println("Data/hora partida: " + dataPartida.format(formato) + " às " + horaPartida);
-		System.out.println("Aeroporto de chegada: " + aeroportoChegada);
+		System.out.println("ID Aeroporto de chegada: " + aeroportoChegada.getIdentificacao());
 		System.out.println("Data/hora chegada:" + dataChegada.format(formato) + " às " + horaChegada);
 		System.out.println("Lotação: " + lotacao + "/" + aviao.getCapacPassageiros());
 		System.out.println("Peso da carga embarcada: " + pesoCargaEmbrcada + "/" + aviao.getCapacCarga());
