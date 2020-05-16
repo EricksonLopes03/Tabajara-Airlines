@@ -9,12 +9,17 @@ public class Voo {
 	private LocalDate dataPartida, dataChegada;
 	private LocalTime horaPartida, horaChegada;
 	private int lotacao, codigo;
-	private double pesoCargaEmbrcada, precoViagem;
+	private double pesoCargaEmbrcada, precoViagem, precoVoo;
 	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	public Voo(Aviao aviao, int codigo, Aeroporto aeroportoPartida, Aeroporto aeroportoChegada, LocalDate dataPartida,
+	
+	public Voo() {
+		
+	}
+	
+	public Voo(Aviao aviao, Aeroporto aeroportoPartida, Aeroporto aeroportoChegada, LocalDate dataPartida,
 			LocalDate dataChegada, LocalTime horaPartida, LocalTime horaChegada, int lotacao, double pesoCargaEmbrcada,
-			double precoViagem) {
+			double precoViagem, double precoVoo) {
 		super();
 		this.aviao = aviao;
 		this.aeroportoPartida = aeroportoPartida;
@@ -25,8 +30,16 @@ public class Voo {
 		this.horaChegada = horaChegada;
 		this.lotacao = lotacao;
 		this.pesoCargaEmbrcada = pesoCargaEmbrcada;
-		this.codigo = codigo;
 		this.precoViagem = precoViagem;
+		this.precoVoo = precoVoo;
+	}
+
+	public double getPrecoVoo() {
+		return precoVoo;
+	}
+
+	public void setPrecoVoo(double precoVoo) {
+		this.precoVoo = precoVoo;
 	}
 
 	public Aviao getAviao() {
