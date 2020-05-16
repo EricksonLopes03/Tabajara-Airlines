@@ -76,7 +76,7 @@ public class GerenciaCliente {
 				c.imprimir();
 				id++;
 			}
-			System.out.println("Digite a posição do cliente que deseja alterar: ");
+			System.out.println("Digite a posição do cliente que deseja alterar dados: ");
 			pos = scInt.nextInt();
 			Cliente cliente = cli.get(pos);
 			System.out.println("Insira os novos dados para...");
