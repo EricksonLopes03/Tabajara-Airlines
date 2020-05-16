@@ -66,37 +66,38 @@ public class GerenciaCliente {
 	}
 
 	public void alterar() {
-		for (Cliente c : cli) {
-			c.imprimir();
+		if (cli.isEmpty()) {
+			System.out.println("N]ao há clientes cadastrados!");
+		} else {
+
+			int id = 0, pos;
+			for (Cliente c : cli) {
+				System.out.println("Posição: " + id);
+				c.imprimir();
+				id++;
+			}
+			System.out.println("Digite a posição do cliente que deseja alterar: ");
+			pos = scInt.nextInt();
+			Cliente cliente = cli.get(pos);
+			System.out.println("Insira os novos dados para...");
+			System.out.println("Digite o nome do cliente");
+			cliente.setNome(scString.nextLine());
+			System.out.println("Digite o logradouro: ");
+			cliente.setLogradouro(scString.nextLine());
+			System.out.println("Digite o número: ");
+			cliente.setNumero(scString.nextLine());
+			System.out.println("Digite o bairro: ");
+			cliente.setBairro(scString.nextLine());
+			System.out.println("Ditie o município: ");
+			cliente.setMunicipio(scString.nextLine());
+			System.out.println("Digite o estado: ");
+			cliente.setEstado(scString.nextLine());
+			System.out.println("Digite o CEP: ");
+			cliente.setCep(scString.nextLine());
+			System.out.println("Digite o telefone: ");
+			cliente.setTelefone(scString.nextLine());
+			System.out.println("Alterações feitas com sucesso!");
 		}
-		
-		int id = 0, pos;
-		for (Cliente c : cli) {
-			System.out.println("Posição: " + id);
-			c.imprimir();
-			id++;
-		}
-		System.out.println("Digite a posição do cliente que deseja alterar: ");
-		pos = scInt.nextInt();
-		Cliente cliente = cli.get(pos);
-		System.out.println("Insira os novos dados para...");
-		System.out.println("Digite o nome do cliente");
-		cliente.setNome(scString.nextLine());
-		System.out.println("Digite o logradouro: ");
-		cliente.setNome(scString.nextLine());
-		System.out.println("Digite o número: ");
-		cliente.setNumero(scString.nextLine());
-		System.out.println("Digite o bairro: ");
-		cliente.setBairro(scString.nextLine());
-		System.out.println("Ditie o município: ");
-		cliente.setMunicipio(scString.nextLine());
-		System.out.println("Digite o estado: ");
-		cliente.setEstado(scString.nextLine());
-		System.out.println("Digite o CEP: ");
-		cliente.setCep(scString.nextLine());
-		System.out.println("Digite o telefone: ");
-		cliente.setTelefone(scString.nextLine());
-		System.out.println("Alterações feitas com sucesso!");
 	}
 
 	public void consultar() {
@@ -133,11 +134,11 @@ public class GerenciaCliente {
 					c.imprimir();
 					System.out.println("Confirma a exclusão desse cadastro? 1 p/ sim ou 2 p/ não");
 					int confirma = scInt.nextInt();
-					if(confirma == 1) {
+					if (confirma == 1) {
 						cli.remove(c);
 						System.out.println("Exclusão realizada!");
-					}else {
-						System.out.println("Exclusão não realizada!");					
+					} else {
+						System.out.println("Exclusão não realizada!");
 					}
 					break;
 				}

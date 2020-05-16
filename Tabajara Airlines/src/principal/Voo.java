@@ -140,6 +140,7 @@ public class Voo {
 		System.out.println("Lotação: " + lotacao + "/" + aviao.getCapacPassageiros());
 		System.out.println("Peso da carga embarcada: " + pesoCargaEmbrcada + "/" + aviao.getCapacCarga());
 		System.out.println("Preço da viagem: " + precoViagem);
+		System.out.println("\n\n");
 	}
 	
 	

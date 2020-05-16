@@ -20,7 +20,7 @@ public class Main {
 
 
 		Scanner sc = new Scanner(System.in);
-		int op, sop;
+		int op, sop1=0, sop2=0, sop3=0, sop4=0, sop5=0;
 
 		do {
 			System.out.println("1 - Clientes");
@@ -37,9 +37,10 @@ public class Main {
 					System.out.println("2 - Alterar");
 					System.out.println("3 - Excluir");
 					System.out.println("4 - Relatório");
+					System.out.println("5 - Consulta");
 					System.out.println("0 - Voltar");
-					sop = sc.nextInt();
-					switch(sop) {
+					sop1 = sc.nextInt();
+					switch(sop1) {
 					case 1:
 						gc.cadastrar();
 						break;
@@ -52,23 +53,28 @@ public class Main {
 					case 4:
 						gc.relatorio();
 						break;
+					case 5:
+						gc.consultar();
+						break;
 					case 0:
 						break;
 					default:
 						System.out.println("OPÇÃO INVÁLIDA");
-						break;
+						
 					
 					}
-					}while(sop != 0);
+					}while(sop1 != 0);
+				break;
 				case 2:
 					do {
 						System.out.println("1 - Cadastrar");
 						System.out.println("2 - Alterar");
 						System.out.println("3 - Excluir");
 						System.out.println("4 - Relatório");
+						System.out.println("5 - Consulta");
 						System.out.println("0 - Voltar");
-						sop = sc.nextInt();
-						switch(sop) {
+						sop2 = sc.nextInt();
+						switch(sop2) {
 						case 1:
 							gav.cadastrar();
 							break;
@@ -81,15 +87,19 @@ public class Main {
 						case 4:
 							gav.relatorio();
 							break;
+						case 5:
+							gav.consultar();
+							break;
 						case 0:
 							break;
 						default:
 							System.out.println("OPÇÃO INVÁLIDA");
 							break;
 						}
-						break;
+						
 
-					}while(sop != 0);
+					}while(sop2 != 0);
+					break;
 					
 					
 				case 3:
@@ -98,9 +108,10 @@ public class Main {
 						System.out.println("2 - Alterar");
 						System.out.println("3 - Excluir");
 						System.out.println("4 - Relatório");
+						System.out.println("5 - Consulta");
 						System.out.println("0 - Voltar");
-						sop = sc.nextInt();
-						switch(sop) {
+						sop3 = sc.nextInt();
+						switch(sop3) {
 						case 1:
 							ga.cadastrar();
 							break;
@@ -113,15 +124,19 @@ public class Main {
 						case 4:
 							ga.relatorio();
 							break;
+						case 5:
+							ga.consultar();
+							break;
 						case 0:
 							break;
 						default:
 							System.out.println("OPÇÃO INVÁLIDA");
 							break;
 						}
-						break;
+						
 
-					}while(sop != 0);
+					}while(sop3 != 0);
+					break;
 					
 				case 4:
 					do {
@@ -130,8 +145,8 @@ public class Main {
 						System.out.println("3 - Excluir");
 						System.out.println("4 - Relatório");
 						System.out.println("0 - Voltar");
-						sop = sc.nextInt();
-						switch(sop) {
+						sop4 = sc.nextInt();
+						switch(sop4) {
 						case 1:
 							gv.cadastrar();
 							break;
@@ -152,7 +167,8 @@ public class Main {
 						}
 						break;
 
-					}while(sop != 0);
+					}while(sop4 != 0);
+					break;
 					
 					
 				case 5:
@@ -162,8 +178,8 @@ public class Main {
 						System.out.println("3 - Relatórios");
 						System.out.println("0 - Voltar");
 						
-						sop = sc.nextInt();
-						switch(sop) {
+						sop5 = sc.nextInt();
+						switch(sop5) {
 						case 1:
 							gp.venda();
 							break;
@@ -179,9 +195,10 @@ public class Main {
 							System.out.println("OPÇÃO INVÁLIDA");
 							break;
 						}
-						break;
+						
 
-					}while(sop != 0);
+					}while(sop5 != 0);
+					break;
 					
 					
 					

@@ -87,6 +87,7 @@ public class Cliente {
 		System.out.println(" Estado: " + estado);
 		System.out.println(" CEP: " + cep);
 		System.out.println(" Telefone: " + telefone);
+		System.out.println("\n\n");
 	}
 	
 	

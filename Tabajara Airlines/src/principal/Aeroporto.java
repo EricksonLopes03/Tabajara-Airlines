@@ -59,6 +59,7 @@ public class Aeroporto {
 		System.out.println("Municipio: "+ municipio);
 		System.out.println("Estado: " + estado);
 		System.out.println("País: " + pais);
+		System.out.println("\n\n");
 	}
 	
 	

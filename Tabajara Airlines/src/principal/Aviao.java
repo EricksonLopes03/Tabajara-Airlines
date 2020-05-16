@@ -62,6 +62,7 @@ public class Aviao {
 		System.out.println("Quantidade de Turbinas: " + qtdTurbinas);
 		System.out.println("Capacidade de Passageiros: " + capacPassageiros);
 		System.out.println("Capacidade de Carga: " + capacCarga);
+		System.out.println("\n\n");
 		
 	}
 	
