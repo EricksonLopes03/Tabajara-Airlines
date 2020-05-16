@@ -17,14 +17,14 @@ public class GerenciaAviao {
 		String id, modelo;
 		int qtdTurbinas, capacPassageiros;
 		double capacCarga;
-		boolean idDisponivel;
+		boolean idDisponivel = true;
 		System.out.println("Insira os dados a seguir...");
 		do {
 			idDisponivel = true;
 			System.out.println("Identificação: ");
 			id = scString.nextLine();
 			for (Aviao a : avioes) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					System.out.println("Esta identificação já está em uso");
 					idDisponivel = false;
 				}
@@ -91,7 +91,7 @@ public class GerenciaAviao {
 			String id = scString.nextLine();
 			boolean achou = false;
 			for (Aviao a : avioes) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					a.imprimir();
 					achou = true;
 					break;
@@ -113,7 +113,7 @@ public class GerenciaAviao {
 			System.out.println("Digite a identificação que deseja excluir: ");
 			String id = scString.nextLine();
 			for (Aviao a : avioes) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					a.imprimir();
 					System.out.println("Confirma a exclusão desse cadastro? 1 p/ sim ou 2 p/ não");
 					int confirma = scInt.nextInt();
@@ -123,7 +123,7 @@ public class GerenciaAviao {
 					}else {
 						System.out.println("Exclusão não realizada!");					
 					}
-					break;
+
 				}
 			}
 		}

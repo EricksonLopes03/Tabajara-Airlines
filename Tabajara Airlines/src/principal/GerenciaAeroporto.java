@@ -19,14 +19,14 @@ public class GerenciaAeroporto {
 
 	public void cadastrar() {
 		String id, nome, municipio, estado, pais;
-		boolean idDisponivel;
+		boolean idDisponivel = true;
 		System.out.println("Insira os dados a seguir...");
 		do {
 			idDisponivel = true;
 			System.out.println("Identificação: ");
 			id = scString.nextLine();
 			for (Aeroporto a : aeroportos) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					System.out.println("Esta identificação já está em uso");
 					idDisponivel = false;
 				}
@@ -95,7 +95,7 @@ public class GerenciaAeroporto {
 			String id = scString.nextLine();
 			boolean achou = false;
 			for (Aeroporto a : aeroportos) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					a.imprimir();
 					achou = true;
 					break;
@@ -117,7 +117,7 @@ public class GerenciaAeroporto {
 			System.out.println("Digite a identificação que deseja excluir: ");
 			String id = scString.nextLine();
 			for (Aeroporto a : aeroportos) {
-				if (a.getIdentificacao() == id) {
+				if (a.getIdentificacao().equals(id)) {
 					a.imprimir();
 					System.out.println("Confirma a exclusão desse cadastro? 1 p/ sim ou 2 p/ não");
 					int confirma = scInt.nextInt();

@@ -160,7 +160,7 @@ public class GerenciaVoo {
 			System.out.println("Não há voos cadastrados");
 		}else {
 
-			System.out.println("Digite a posição do voo que deseja alterar: ");
+			System.out.println("Digite a posição do voo que deseja excluir: ");
 			pos = sc.nextInt();
 			Voo voo = voos.get(pos);
 		

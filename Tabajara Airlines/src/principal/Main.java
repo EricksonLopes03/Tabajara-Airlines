@@ -23,22 +23,27 @@ public class Main {
 		int op, sop1=0, sop2=0, sop3=0, sop4=0, sop5=0;
 
 		do {
-			System.out.println("1 - Clientes");
-			System.out.println("2 - Aviões");
-			System.out.println("3 - Aeroportos");
-			System.out.println("4 - Voos");
-			System.out.println("5 - Passagens");
-			System.out.println("0 - Encerrar aplicação");
+			System.out.println("\n\n====[ Menu Principal ]====");
+			System.out.println(" 1 - Clientes");
+			System.out.println(" 2 - Aviões");
+			System.out.println(" 3 - Aeroportos");
+			System.out.println(" 4 - Voos");
+			System.out.println(" 5 - Passagens");
+			System.out.println(" 0 - Encerrar aplicação");
 			op = sc.nextInt();
 			switch(op) {
 			case 1:
 				do {
-					System.out.println("1 - Cadastrar");
-					System.out.println("2 - Alterar");
-					System.out.println("3 - Excluir");
-					System.out.println("4 - Relatório");
-					System.out.println("5 - Consulta");
-					System.out.println("0 - Voltar");
+
+
+					System.out.println("\n\n====[ Menu Clientes ]====");
+					System.out.println(" 1 - Cadastrar");
+					System.out.println(" 2 - Alterar");
+					System.out.println(" 3 - Excluir");
+					System.out.println(" 4 - Relatório");
+					System.out.println(" 5 - Consulta");
+					System.out.println(" 0 - Voltar");
+
 					sop1 = sc.nextInt();
 					switch(sop1) {
 					case 1:
@@ -67,12 +72,13 @@ public class Main {
 				break;
 				case 2:
 					do {
-						System.out.println("1 - Cadastrar");
-						System.out.println("2 - Alterar");
-						System.out.println("3 - Excluir");
-						System.out.println("4 - Relatório");
-						System.out.println("5 - Consulta");
-						System.out.println("0 - Voltar");
+						System.out.println("\n\n====[ Menu Aviões ]====");
+						System.out.println(" 1 - Cadastrar");
+						System.out.println(" 2 - Alterar");
+						System.out.println(" 3 - Excluir");
+						System.out.println(" 4 - Relatório");
+						System.out.println(" 5 - Consulta");
+						System.out.println(" 0 - Voltar");
 						sop2 = sc.nextInt();
 						switch(sop2) {
 						case 1:
@@ -104,12 +110,13 @@ public class Main {
 					
 				case 3:
 					do {
-						System.out.println("1 - Cadastrar");
-						System.out.println("2 - Alterar");
-						System.out.println("3 - Excluir");
-						System.out.println("4 - Relatório");
-						System.out.println("5 - Consulta");
-						System.out.println("0 - Voltar");
+						System.out.println("\n\n====[ Menu Aeroportos ]====");
+						System.out.println(" 1 - Cadastrar");
+						System.out.println(" 2 - Alterar");
+						System.out.println(" 3 - Excluir");
+						System.out.println(" 4 - Relatório");
+						System.out.println(" 5 - Consulta");
+						System.out.println(" 0 - Voltar");
 						sop3 = sc.nextInt();
 						switch(sop3) {
 						case 1:
@@ -140,11 +147,12 @@ public class Main {
 					
 				case 4:
 					do {
-						System.out.println("1 - Cadastrar");
-						System.out.println("2 - Alterar");
-						System.out.println("3 - Excluir");
-						System.out.println("4 - Relatório");
-						System.out.println("0 - Voltar");
+						System.out.println("\n\n====[ Menu Voos ]====");
+						System.out.println(" 1 - Cadastrar");
+						System.out.println(" 2 - Alterar");
+						System.out.println(" 3 - Excluir");
+						System.out.println(" 4 - Relatório");
+						System.out.println(" 0 - Voltar");
 						sop4 = sc.nextInt();
 						switch(sop4) {
 						case 1:
@@ -173,10 +181,11 @@ public class Main {
 					
 				case 5:
 					do {
-						System.out.println("1 - Venda");
-						System.out.println("2 - Cancelamento");
-						System.out.println("3 - Relatórios");
-						System.out.println("0 - Voltar");
+						System.out.println("\n\n====[ Menu Passagens ]====");
+						System.out.println(" 1 - Venda");
+						System.out.println(" 2 - Cancelamento");
+						System.out.println(" 3 - Relatórios");
+						System.out.println(" 0 - Voltar");
 						
 						sop5 = sc.nextInt();
 						switch(sop5) {
@@ -187,7 +196,7 @@ public class Main {
 							// ainda não feito
 							break;
 						case 3:
-							ga.relatorio();
+							gp.relatorio();
 							break;
 						case 0:
 							break;

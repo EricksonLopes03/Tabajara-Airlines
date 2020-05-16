@@ -65,7 +65,8 @@ public class GerenciaPassagem {
 				preco = voo.getPrecoViagem();
 
 				double pesotot = voo.getPesoCargaEmbrcada() + peso;
-				if(pesotot > voo.getPesoCargaEmbrcada()) {
+				
+				if(pesotot > voo.getAviao().getCapacCarga()) {
 					System.out.println("Impossível embarcar o passageiro no vôo, carga total excede o limite do avião.");
 				}else {
 					if(data.isAfter(voo.getDataPartida())) {
@@ -73,7 +74,7 @@ public class GerenciaPassagem {
 
 
 					}else if(data.isBefore(voo.getDataPartida().minusDays(10))) {
-						preco = ((voo.getPrecoViagem() * 0.74) + voo.getPrecoViagem());
+						preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.074));
 						if(passagens.isEmpty()) {
 							codigo = 1;
 						}else {
@@ -92,7 +93,7 @@ public class GerenciaPassagem {
 						System.out.println(" Venda de passagem concluída! ");
 
 					}else {
-						preco = ((voo.getPrecoViagem() * 0.53) + voo.getPrecoViagem());
+						preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.053));
 						if(passagens.isEmpty()) {
 							codigo = 1;
 						}else {
@@ -127,9 +128,9 @@ public class GerenciaPassagem {
 	public void relatorio() {
 		int pos, op;
 		Voo voo;
-		System.out.println(" Menu Relatórios");
-		System.out.println(" 1 - Quantidade de lugares disponíveis no vôo ");
-		System.out.println(" 2 - Capacidade de carga disponível no vôo ");
+		System.out.println("\n\n====[ Menu relatórios de voo e passagens ]====");
+		System.out.println(" 1 - Quantidade de lugares disponíveis no voo ");
+		System.out.println(" 2 - Capacidade de carga disponível no voo ");
 		System.out.println(" 3 - Total arrecadado no vôo ");
 		System.out.println(" 4 - Listagem de passageiros no vôo ");
 		System.out.println(" 5 - Listagem de passageiros no vôo junto do valor da passagem e desconto total oferecido");
@@ -190,11 +191,11 @@ public class GerenciaPassagem {
 			System.out.println("\n\n Voo posição: " + pos);
 			for(Passagem p : passagens) {
 				if(p.getVoo().equals(voo)) {
-					System.out.println("Passageiro identificação " + p.getCliente().getIdentificacao() + " incluso no vôo, valor passagem: R$ " + p.getPrecoFinalViagem());
+					System.out.println("Passageiro identificação " + p.getCliente().getIdentificacao() + " incluso no voo, valor passagem: R$ " + p.getPrecoFinalViagem());
 				}
 			}
 
-			double tot = (voo.getLotacao() * voo.getPrecoViagem());
+			double tot = ((voo.getLotacao() * voo.getPrecoViagem()) - voo.getPrecoVoo());
 			System.out.println("\n Valor total de descontos condedidos na viagem: R$ " + tot);
 
 
