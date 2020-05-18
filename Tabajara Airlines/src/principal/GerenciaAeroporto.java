@@ -71,17 +71,21 @@ public class GerenciaAeroporto {
 
 			System.out.println("Digite a posição do aeroporto que deseja alterar: ");
 			int pos = scInt.nextInt();
-			Aeroporto aero = aeroportos.get(pos);
-			System.out.println("Insira os novos dados para...");
-			System.out.println("Nome: ");
-			aero.setNome(scString.nextLine());
-			System.out.println("Município: ");
-			aero.setMunicipio(scString.nextLine());
-			System.out.println("Estado: ");
-			aero.setEstado(scString.nextLine());
-			System.out.println("País: ");
-			aero.setPais(scString.nextLine());
-			System.out.println("Alterações feitas com sucesso!");
+			if(pos < aeroportos.size() && pos >= 0) {
+				Aeroporto aero = aeroportos.get(pos);
+				System.out.println("Insira os novos dados para...");
+				System.out.println("Nome: ");
+				aero.setNome(scString.nextLine());
+				System.out.println("Município: ");
+				aero.setMunicipio(scString.nextLine());
+				System.out.println("Estado: ");
+				aero.setEstado(scString.nextLine());
+				System.out.println("País: ");
+				aero.setPais(scString.nextLine());
+				System.out.println("Alterações feitas com sucesso!");
+			}else {
+				System.out.println("Posição inexistente!");
+			}
 			
 			
 		}
@@ -116,8 +120,10 @@ public class GerenciaAeroporto {
 		} else {
 			System.out.println("Digite a identificação que deseja excluir: ");
 			String id = scString.nextLine();
+			boolean achou = false;
 			for (Aeroporto a : aeroportos) {
 				if (a.getIdentificacao().equals(id)) {
+					achou = true;
 					a.imprimir();
 					System.out.println("Confirma a exclusão desse cadastro? 1 p/ sim ou 2 p/ não");
 					int confirma = scInt.nextInt();
@@ -126,9 +132,11 @@ public class GerenciaAeroporto {
 						System.out.println("Exclusão realizada!");
 					}else {
 						System.out.println("Exclusão não realizada!");					
-					}
-					break;
+					}break;
+
 				}
+			}if(!achou) {
+				System.out.println("Não foi encontrado nenhum registro para este identificador!");
 			}
 		}
 		
