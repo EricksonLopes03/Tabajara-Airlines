@@ -189,7 +189,7 @@ public class GerenciaVoo {
 
 			System.out.println("Digite a posição do voo que deseja excluir: ");
 			pos = sc.nextInt();
-			if(pos < 0 || pos >= aeroportos.size()) {
+			if(pos < 0 || pos >= voos.size()) {
 				System.out.println("\n Posição inválida");
 			}else {
 			Voo voo = voos.get(pos);
