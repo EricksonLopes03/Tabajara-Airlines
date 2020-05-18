@@ -68,17 +68,21 @@ public class GerenciaAviao {
 
 			System.out.println("Digite a posição do avião que deseja alterar: ");
 			int pos = scInt.nextInt();
-			Aviao a = avioes.get(pos);
-			System.out.println("Digite os novos dados para...");
-			System.out.println("Modelo: ");
-			a.setModelo(scString.nextLine());
-			System.out.println("Quantidade de Turbinas: ");
-			a.setQtdTurbinas(scInt.nextInt());
-			System.out.println("Capacidade de Passageiros: ");
-			a.setCapacPassageiros(scInt.nextInt());
-			System.out.println("Capacidade de Carga");
-			a.setCapacCarga(scInt.nextDouble());
-			System.out.println("Alterações feitas com sucesso!");
+			if(pos < avioes.size() && pos >=0) {
+				Aviao a = avioes.get(pos);
+				System.out.println("Digite os novos dados para...");
+				System.out.println("Modelo: ");
+				a.setModelo(scString.nextLine());
+				System.out.println("Quantidade de Turbinas: ");
+				a.setQtdTurbinas(scInt.nextInt());
+				System.out.println("Capacidade de Passageiros: ");
+				a.setCapacPassageiros(scInt.nextInt());
+				System.out.println("Capacidade de Carga");
+				a.setCapacCarga(scInt.nextDouble());
+				System.out.println("Alterações feitas com sucesso!");
+			}else {
+				System.out.println("Posição inexistente!");
+			}
 			
 		}
 	}
@@ -112,19 +116,24 @@ public class GerenciaAviao {
 		} else {
 			System.out.println("Digite a identificação que deseja excluir: ");
 			String id = scString.nextLine();
+			boolean achou = false;
 			for (Aviao a : avioes) {
 				if (a.getIdentificacao().equals(id)) {
 					a.imprimir();
 					System.out.println("Confirma a exclusão desse cadastro? 1 p/ sim ou 2 p/ não");
 					int confirma = scInt.nextInt();
+					achou = true;
 					if(confirma == 1) {
 						avioes.remove(a);
 						System.out.println("Exclusão realizada!");
 					}else {
 						System.out.println("Exclusão não realizada!");					
 					}
+					break;
 
 				}
+			} if(!achou) {
+				System.out.println("Não foi encontrado nenhum cadastro para o identificador informado!");
 			}
 		}
 		
