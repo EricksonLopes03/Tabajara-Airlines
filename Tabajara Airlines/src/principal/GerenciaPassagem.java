@@ -1,5 +1,6 @@
 package principal;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class GerenciaPassagem {
 	private ArrayList<Cliente> clientes;
 	private ArrayList<Passagem> passagens;
 	private Scanner sc = new Scanner(System.in);
+	private DecimalFormat formatador = new DecimalFormat("0.00");
 
 	public GerenciaPassagem(ArrayList<Passagem> passagens, ArrayList<Aviao> avioes, ArrayList<Aeroporto> aeroportos, ArrayList<Voo> voos, ArrayList<Cliente> clientes) {
 		this.avioes = avioes;
@@ -39,89 +41,137 @@ public class GerenciaPassagem {
 
 			System.out.println("Digite a posição do cliente: ");
 			pos = sc.nextInt();
-			Cliente cli = clientes.get(pos);
-			System.out.println("Digite a posição do voo");
-			pos = sc.nextInt();
-			Voo voo = voos.get(pos);
-
-			if(voo.getLotacao() < voo.getAviao().getCapacPassageiros()) {
-				System.out.println("Data da venda da passagem:");
-				System.out.println("Dia:");
-				int dia = sc.nextInt();
-				System.out.println("Mês: ");
-				int mes = sc.nextInt();
-				System.out.println("Ano: ");
-				int ano = sc.nextInt();
-				data = LocalDate.of(ano, mes, dia);
-				System.out.println("Hora: ");
-				int hor = sc.nextInt()	;
-				System.out.println("Minuto");
-				int min = sc.nextInt();
-				hora = LocalTime.of(hor, min);
-				System.out.println("Digite o peso da bagagem do cliente");
-				double peso = sc.nextDouble();
-
-
-				preco = voo.getPrecoViagem();
-
-				double pesotot = voo.getPesoCargaEmbrcada() + peso;
-				
-				if(pesotot > voo.getAviao().getCapacCarga()) {
-					System.out.println("Impossível embarcar o passageiro no vôo, carga total excede o limite do avião.");
+			if(pos < 0 || pos >= clientes.size()) {
+				System.out.println("\n Posição inválida");
+			}else {
+				Cliente cli = clientes.get(pos);
+				System.out.println("Digite a posição do voo");
+				pos = sc.nextInt();
+				if(pos < 0 || pos >= voos.size()) {
+					System.out.println("\n Posição inválida");
 				}else {
-					if(data.isAfter(voo.getDataPartida())) {
-						System.out.println("Impossível vender passagem após a partida do voo");
+					Voo voo = voos.get(pos);
+
+					if(voo.getLotacao() < voo.getAviao().getCapacPassageiros()) {
+						System.out.println("Data da venda da passagem:");
+						System.out.println("Dia:");
+						int dia = sc.nextInt();
+						System.out.println("Mês: ");
+						int mes = sc.nextInt();
+						System.out.println("Ano: ");
+						int ano = sc.nextInt();
+						data = LocalDate.of(ano, mes, dia);
+						System.out.println("Hora: ");
+						int hor = sc.nextInt()	;
+						System.out.println("Minuto");
+						int min = sc.nextInt();
+						hora = LocalTime.of(hor, min);
+						System.out.println("Digite o peso da bagagem do cliente");
+						double peso = sc.nextDouble();
 
 
-					}else if(data.isBefore(voo.getDataPartida().minusDays(10))) {
-						preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.074));
-						if(passagens.isEmpty()) {
-							codigo = 1;
+						preco = voo.getPrecoViagem();
+
+						double pesotot = voo.getPesoCargaEmbrcada() + peso;
+
+						if(pesotot > voo.getAviao().getCapacCarga()) {
+							System.out.println("Impossível embarcar o passageiro no voo, carga total excede o limite do avião.");
 						}else {
-							codigo = 1;
-							for(Passagem p : passagens) {
-								if(p.getCodigo() == codigo) {
-									codigo = (p.getCodigo() + 1);
+							if(data.isAfter(voo.getDataPartida())) {
+								System.out.println("Impossível vender passagem após a partida do voo");
+
+
+							}else if(data.isBefore(voo.getDataPartida().minusDays(10))) {
+								preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.074));
+								if(passagens.isEmpty()) {
+									codigo = 1;
+								}else {
+									codigo = 1;
+									for(Passagem p : passagens) {
+										if(p.getCodigo() == codigo) {
+											codigo = (p.getCodigo() + 1);
+										}
+									}
 								}
+
+								passagens.add(new Passagem(cli, codigo, voo, data, hora, preco, peso));
+								voo.setLotacao(voo.getLotacao() + 1);
+								voo.setPesoCargaEmbrcada(pesotot);
+								voo.setPrecoVoo(voo.getPrecoVoo() + preco);
+								System.out.println(" Venda de passagem concluída! ");
+
+							}else {
+								preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.053));
+								if(passagens.isEmpty()) {
+									codigo = 1;
+								}else {
+									codigo = 1;
+									for(Passagem p : passagens) {
+										if(p.getCodigo() == codigo) {
+											codigo = (p.getCodigo() + 1);
+										}
+									}
+								}
+
+								passagens.add(new Passagem(cli, codigo, voo, data, hora, preco, peso));
+								voo.setLotacao(voo.getLotacao() + 1);
+								voo.setPesoCargaEmbrcada(pesotot);
+								voo.setPrecoVoo(voo.getPrecoVoo() + preco);
+								System.out.println(" Venda de passagem concluída! ");
 							}
+
 						}
 
-						passagens.add(new Passagem(cli, codigo, voo, data, hora, preco));
-						voo.setLotacao(voo.getLotacao() + 1);
-						voo.setPesoCargaEmbrcada(pesotot);
-						voo.setPrecoVoo(voo.getPrecoVoo() + preco);
-						System.out.println(" Venda de passagem concluída! ");
+
+
 
 					}else {
-						preco = ( voo.getPrecoViagem() - (voo.getPrecoViagem() * 0.053));
-						if(passagens.isEmpty()) {
-							codigo = 1;
-						}else {
-							codigo = 1;
-							for(Passagem p : passagens) {
-								if(p.getCodigo() == codigo) {
-									codigo = (p.getCodigo() + 1);
-								}
-							}
-						}
-
-						passagens.add(new Passagem(cli, codigo, voo, data, hora, preco));
-						voo.setLotacao(voo.getLotacao() + 1);
-						voo.setPesoCargaEmbrcada(pesotot);
-						voo.setPrecoVoo(voo.getPrecoVoo() + preco);
-						System.out.println(" Venda de passagem concluída! ");
+						System.out.println("\n Voo lotado");
 					}
-
-				}
-
-
+				}}}
+	}
 
 
+
+	public void cancelar() {
+
+		int pos;
+
+		System.out.println("Digite a posição da passagem que deseja cancelar");
+		pos = sc.nextInt();
+
+		if(pos < 0 || pos >= passagens.size()) {
+			System.out.println("\n Posição inválida");
+		}else {
+
+			Passagem p = passagens.get(pos);
+			p.imprimir();
+			System.out.println("Deseja realmente cancelar essa passagem?");
+			System.out.println("    1 - SIM       |       2 - NÃO ");
+			int opc = sc.nextInt();
+			if(opc == 1) {
+				Voo v = p.getVoo();
+				v.setPesoCargaEmbrcada(v.getPesoCargaEmbrcada() - p.getPeso());
+				v.setLotacao(v.getLotacao() - 1);
+				v.setPrecoVoo(v.getPrecoVoo() - p.getPrecoFinalViagem());
+				passagens.remove(pos);
+				System.out.println("\n Passagem cancelada com sucesso, informações atualizadas na base de dados");
+			}else if(opc == 2) {
+				System.out.println("Cancelamento não realizado");
 			}else {
-				System.out.println("\n Voo lotado");
+				System.out.println("Opção inválida");
 			}
 		}
+
 	}
+
+
+
+
+
+
+
+
 
 
 
@@ -131,9 +181,9 @@ public class GerenciaPassagem {
 		System.out.println("\n\n====[ Menu relatórios de voo e passagens ]====");
 		System.out.println(" 1 - Quantidade de lugares disponíveis no voo ");
 		System.out.println(" 2 - Capacidade de carga disponível no voo ");
-		System.out.println(" 3 - Total arrecadado no vôo ");
-		System.out.println(" 4 - Listagem de passageiros no vôo ");
-		System.out.println(" 5 - Listagem de passageiros no vôo junto do valor da passagem e desconto total oferecido");
+		System.out.println(" 3 - Total arrecadado no voo ");
+		System.out.println(" 4 - Listagem de passageiros no voo ");
+		System.out.println(" 5 - Listagem de passageiros no voo junto do valor da passagem e desconto total oferecido");
 		System.out.println(" 6 - Retornar");
 		op = sc.nextInt();
 
@@ -141,32 +191,41 @@ public class GerenciaPassagem {
 		case 1:
 			System.out.println("Digite a posição do voo");
 			pos = sc.nextInt();
+			if(pos < 0 || pos >= voos.size()) {
+				System.out.println("\n Posição inválida");
+			}else {
 			voo = voos.get(pos);
 			int lugares = (voo.getAviao().getCapacPassageiros() - voo.getLotacao());
 
 			System.out.println("\n\n Voo posição: " + pos);
 			System.out.println("Lugares Disponíveis: " + lugares + "\n");
-
+			}
 			break;
 
 		case 2:
 			System.out.println("Digite a posição do voo");
 			pos = sc.nextInt();
+			if(pos < 0 || pos >= voos.size()) {
+				System.out.println("\n Posição inválida");
+			}else {
 			voo = voos.get(pos);
 			double carga = (voo.getAviao().getCapacCarga() - voo.getPesoCargaEmbrcada());
 			System.out.println("\n\n Voo posição: " + pos);
 			System.out.println("Capacidade de carga disponível: " + carga + "\n");
 			break;
-
+			}
 		case 3:
 
 			System.out.println("Digite a posição do voo");
 			pos = sc.nextInt();
+			if(pos < 0 || pos >= voos.size()) {
+				System.out.println("\n Posição inválida");
+			}else {
 			voo = voos.get(pos);
 			System.out.println("\n\n Voo posição: " + pos);
-			System.out.println(" Total arrecadado: " + voo.getPrecoVoo() + "\n");
+			System.out.println(" Total arrecadado: R$ " + formatador.format(voo.getPrecoVoo()) + "\n");
 
-
+			}
 			break;
 
 		case 4:
@@ -187,6 +246,9 @@ public class GerenciaPassagem {
 
 			System.out.println("Digite a posição do voo");
 			pos = sc.nextInt();
+			if(pos < 0 || pos >= voos.size()) {
+				System.out.println("\n Posição inválida");
+			}else {
 			voo = voos.get(pos);
 			System.out.println("\n\n Voo posição: " + pos);
 			for(Passagem p : passagens) {
@@ -196,9 +258,9 @@ public class GerenciaPassagem {
 			}
 
 			double tot = ((voo.getLotacao() * voo.getPrecoViagem()) - voo.getPrecoVoo());
-			System.out.println("\n Valor total de descontos condedidos na viagem: R$ " + tot);
+			System.out.println("\n Valor total de descontos condedidos na viagem: R$ " + formatador.format(tot));
 
-
+			}
 			break;
 
 		case 6:

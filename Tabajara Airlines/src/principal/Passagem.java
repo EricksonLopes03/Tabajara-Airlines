@@ -12,16 +12,25 @@ public class Passagem {
 	private Voo voo;
 	private LocalDate dataVenda;
 	private LocalTime horaVenda;
-	private double precoFinalViagem;
+	private double precoFinalViagem, peso;
 	private DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	public Passagem(Cliente cliente, int codigo, Voo voo, LocalDate dataVenda, LocalTime horaVenda, double precoFinalViagem) {
+	public Passagem(Cliente cliente, int codigo, Voo voo, LocalDate dataVenda, LocalTime horaVenda, double precoFinalViagem, double peso) {
 		this.codigo = codigo;
 		this.cliente = cliente;
 		this.voo = voo;
 		this.dataVenda = dataVenda;
 		this.horaVenda = horaVenda;
 		this.precoFinalViagem = precoFinalViagem;
+		this.peso = peso;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
 	}
 
 	public Cliente getCliente() {

@@ -173,7 +173,7 @@ public class Main {
 							System.out.println("OPÇÃO INVÁLIDA");
 							break;
 						}
-						break;
+						
 
 					}while(sop4 != 0);
 					break;
@@ -193,7 +193,7 @@ public class Main {
 							gp.venda();
 							break;
 						case 2:
-							// ainda não feito
+							gp.cancelar();
 							break;
 						case 3:
 							gp.relatorio();
